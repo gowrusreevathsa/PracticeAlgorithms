@@ -12,23 +12,23 @@ void addEdge(int s, int d, vector<int> g[]){
 //	g[d].push_back(s);			//Use this if it's an undirected graph
 }
 
-void BFS(int n, vector<int> g[]){
-	bool visited[g->size()];
-	for(int i = 0; i<g->size(); ++i)
+void BFS(int s, int n, vector<int> g[]){
+	bool visited[n];
+	for(int i = 0; i<n; ++i)
 		visited[i] = false;
 		
 	list<int> queue;
 	
 	//source node
-	visited[n] = true;
-	queue.push_back(n);
+	visited[s] = true;
+	queue.push_back(s);
 	
 	while(!queue.empty()){
-		n = queue.front();
-		cout << n << " ";
+		s = queue.front();
+		cout << s << " ";
 		queue.pop_front();
 		
-		for(auto i = g[n].begin(); i != g[n].end(); ++i){
+		for(auto i = g[s].begin(); i != g[s].end(); ++i){
 			if(!visited[*i]){
 				visited[*i] = true;
 				queue.push_back(*i);
@@ -55,7 +55,7 @@ int main(){
 	
 	int source;
 	cin >> source;
-	BFS(source, g);
+	BFS(source, n, g);
 	
 	return 0;
 }
