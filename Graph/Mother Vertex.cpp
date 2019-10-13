@@ -9,13 +9,11 @@ using namespace std;
 
 void addEdge(int s, int d, vector<int> g[]){
 	g[s].push_back(d);
-//	g[d].push_back(s);			//Use this if it's an undirected graph
 }
 
 void DFSUtil(int s, vector<int> g[], bool v[]){
 	
 	v[s] = true;
-	cout << s << " ";
 	
 	//Recurrent calls
 	for(auto i = g[s].begin(); i != g[s].end(); ++i){
@@ -26,12 +24,31 @@ void DFSUtil(int s, vector<int> g[], bool v[]){
 	
 }
 
-void DFS(int s, int n, vector<int> g[]){
+int findMotherVertex(int n, vector<int> g[]){
+	
 	bool visited[n];
 	for(int i = 0; i<n; ++i)
 		visited[i] = false;
+	
+	int lastVertex = 0;
+	for(int i = 0; i<n; ++i){
+		if(!visited[i]){
+			DFSUtil(i, g, visited);
+			lastVertex = i;
+		}
+	}
 		
-	DFSUtil(s, g, visited);
+
+	for(int i = 0; i<n; ++i)
+		visited[i] = false;
+		
+	DFSUtil(lastVertex, g, visited);
+	
+	for(auto e: visited)
+		if(!e)
+			return -1;
+			
+	return lastVertex;
 }
 
 int main(){
@@ -50,9 +67,7 @@ int main(){
 		addEdge(s, d, g);
 	}
 	
-	int source;
-	cin >> source;
-	DFS(source, n, g);
+	cout << findMotherVertex(n, g);
 	
 	return 0;
 }
