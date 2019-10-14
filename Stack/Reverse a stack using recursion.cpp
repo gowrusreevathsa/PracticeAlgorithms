@@ -2,22 +2,6 @@
 
 using namespace std;
 
-//void sortUtil(int t, stack<int>& s){
-//	
-//	int temp;
-//	
-//	if(s.empty() || t>s.top()){
-//		s.push(t);
-//	}
-//	else{
-//		temp = s.top();
-//		s.pop();
-//		sortUtil(t, s);
-//		s.push(temp);
-//	}
-//	
-//}
-
 void rev_stack(stack<int>& s){
 	int temp;
 	
