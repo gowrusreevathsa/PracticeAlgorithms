@@ -25,7 +25,7 @@ int main(){
 	getline(cin, s1);
 	getline(cin, s2);
 	
-	//convert s1 to s2
+	//convert string s1 to s2
 	
 	cout << editDis(s1, s2, s1.length(), s2.length());
 
