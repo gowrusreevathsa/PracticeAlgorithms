@@ -2,6 +2,37 @@
 
 using namespace std;
 
+void computeLPS(string s2, int l2, int lps[]){
+	
+	int len = 0;
+	
+	lps[0] = 0;
+	
+	for(int i = 1; i<l2; ++i){
+		if(s2[i] == s2[len]){
+			++len;
+			lps[i] = len;
+			++i;
+		}
+		else{
+			if(len != 0){
+				len = lps[len-1]
+			}
+			else{
+				lps[i] == 0;
+				++i;
+			}
+		}
+	}
+	
+}
+
+void kmp(string s1, string s2, int l1, int l2, int lps[]){
+	
+	computeLPS(s2, l2, lps);
+	
+}
+
 int main(){
 
 	string s1, s2;		//s1 = text, s2 = pattern
@@ -10,21 +41,9 @@ int main(){
 	
 	int l1 = s1.length();
 	int l2 = s2.length();
+	int lps[l2];
 	
-	int diff = abs(l1 - l2);
-	for(int i = 0; i <= diff; ++i){
-		
-		int j;
-		for(j = 0; j<l2; ++j){
-			if(s1[i+j] != s2[j]){
-				break;
-			}
-		}
-		
-		if(j == l2){
-			cout << "Pattern found at index: " + i + "\n";
-		}
-	}
+	kmp(s1, s2, lps);
 
 	return 0;
 }
