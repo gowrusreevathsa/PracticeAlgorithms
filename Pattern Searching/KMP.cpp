@@ -31,6 +31,22 @@ void kmp(string s1, string s2, int l1, int l2, int lps[]){
 	
 	computeLPS(s2, l2, lps);
 	
+	int j = 0;
+	for(int i = 0; i<l1; ++i){
+		if(s1[i] == s2[j]){
+			++i;
+			++j;
+		}
+		
+		if(j == l2){
+			cout << "Pattern found at index " << i-j << "\n";
+			j = lps[j-1];
+		}
+		else if(i < l1 && s2[j] != s1[i]){
+			
+		}
+	}
+	
 }
 
 int main(){
